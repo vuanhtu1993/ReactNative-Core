@@ -1,38 +1,61 @@
-import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import {AppRegistry, StyleSheet, Text, TextInput, View} from 'react-native';
 
-export default class App extends React.Component {
+export default class FixedDimensionsBasics extends Component {
+  constructor() {
+    super();
+    this.state = {
+      text: "",
+    }
+  }
+  handleInput = (text) => {
+    this.setState({
+      text
+    });
+  };
+
   render() {
-    let pic = {
-      uri: 'https://efc.edu.vn/wp-content/uploads/2017/12/AAEAAQAAAAAAAAntAAAAJDUxZjY4NWJiLTY2MTctNDYwZC04ZWE2LTU3NzhkODJkOTMxZA.jpg'
-    };
     return (
       <View style={styles.container}>
-        <Greeting name="AnhTus"/>
-        <Image source={pic} style={{width: 250, height: 200}}/>
+        <Greeting/>
+        <Text style={{fontSize: 18, marginTop: 10}}>FLex practice</Text>
+        <View style={styles.flex}>
+          <View style={{height: 50, width: 50, backgroundColor: 'powderblue'}} ><Text>1</Text></View>
+          <View style={{height: 50, width: 50, backgroundColor: 'skyblue'}} ><Text>2</Text></View>
+          <View style={{height: 50, width: 50, backgroundColor: 'steelblue'}} ><Text>3</Text></View>
+        </View>
+        <Text style={{fontSize: 18}}>Input practice</Text>
+        <TextInput
+          placeholder="Plz fill in the word to translate"
+          style={{height: 20, fontSize: 16}}
+          value={this.state.text}
+          onChangeText={(text) => this.handleInput(text)}
+        />
+        <Text>
+          { this.state.text.split(' ').map((word) => word && '🍕').join(' ') }
+        </Text>
       </View>
     );
   }
 }
-
-class Greeting extends React.Component {
-  render() {
-    return (
-      <View>
-        <Text style={styles.greeting}>Hello {this.props.name}</Text>
-      </View>
-    );
-  }
-}
+const Greeting = () => {
+  return (
+    <View>
+      <Text style={{fontSize: 25, color: 'gray'}}>Welcome to react native app</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    margin: 'auto',
+    width: 380,
+    marginTop: 50,
   },
-  greeting: {
-    fontSize: 20,
+  flex: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 80,
+    alignItems: 'center',
   }
-});
+})

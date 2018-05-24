@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {AppRegistry, StyleSheet, Text, TextInput, View} from 'react-native';
+import {AppRegistry, StyleSheet, Text, TextInput, View, Alert, Button, TouchableHighlight} from 'react-native';
 
 export default class FixedDimensionsBasics extends Component {
   constructor() {
@@ -13,6 +13,9 @@ export default class FixedDimensionsBasics extends Component {
       text
     });
   };
+  handlePress() {
+    Alert.alert('this is short press');
+  }
 
   render() {
     return (
@@ -34,6 +37,20 @@ export default class FixedDimensionsBasics extends Component {
         <Text>
           { this.state.text.split(' ').map((word) => word && '🍕').join(' ') }
         </Text>
+        <Text style={{fontSize: 18}}>Event handle practice</Text>
+        <Button
+          color="orange"
+          onPress={this.handlePress}
+          title="Press Me"
+        />
+        <Text style={{fontSize: 20}}>Touchables practice</Text>
+        <TouchableHighlight
+          onPress={this.handlePress}
+          underlayColor="white" >
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Touchable highlight</Text>
+          </View>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -49,13 +66,28 @@ const Greeting = () => {
 const styles = StyleSheet.create({
   container: {
     margin: 'auto',
-    width: 380,
+    width: 'auto',
     marginTop: 50,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   flex: {
+    display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
     height: 80,
+    width: 200,
+  },
+  button: {
+    marginBottom: 30,
+    width: 260,
     alignItems: 'center',
+    backgroundColor: '#2196F3'
+  },
+  buttonText: {
+    padding: 20,
+    color: 'white'
   }
-})
+});

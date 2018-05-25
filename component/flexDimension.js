@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   AppRegistry, StyleSheet, Text, TextInput, View, Alert, Button, TouchableHighlight,
-  TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback
+  TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, ScrollView
 } from 'react-native';
 
 export default class FlexDimension extends Component{
@@ -11,46 +11,23 @@ export default class FlexDimension extends Component{
       inputText: "",
     }
   }
-  _onPressButton() {
-    alert('You tapped the button!')
-  }
-
-  _onLongPressButton() {
-    alert('You long-pressed the button!')
-  }
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableHighlight onPress={this._onPressButton} underlayColor="white">
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>TouchableHighlight</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableOpacity onPress={this._onPressButton}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>TouchableOpacity</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableWithoutFeedback
-          onPress={this._onPressButton}
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>TouchableWithoutFeedback</Text>
-          </View>
-        </TouchableWithoutFeedback>
-        <TouchableHighlight onPress={this._onPressButton} onLongPress={this._onLongPressButton} underlayColor="white">
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Touchable with Long Press</Text>
-          </View>
-        </TouchableHighlight>
-      </View>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={{ height: 200, width: 200, backgroundColor: 'powderblue' }}/>
+          <View style={{ height: 200, width: 200, backgroundColor: 'gray' }}/>
+          <View style={{ height: 200, width: 200, backgroundColor: 'orange' }}/>
+          <View style={{ height: 200, width: 200, backgroundColor: 'pink' }}/>
+        </View>
+      </ScrollView>
     );
   }
 }
 
 const Box = () => {
   return (
-    <View style={{ height: 50, width: 50, backgroundColor: 'powderblue' }}/>
+    <View style={{ height: 200, width: 200, backgroundColor: 'powderblue' }}/>
   );
 };
 

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import {AppRegistry, StyleSheet, Text, TextInput, View, Alert, Button, TouchableHighlight} from 'react-native';
+import {
+  AppRegistry, StyleSheet, Text, TextInput, View, Alert, Button, TouchableHighlight,
+  TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback
+} from 'react-native';
 
 export default class FlexDimension extends Component{
   constructor() {
@@ -8,19 +11,38 @@ export default class FlexDimension extends Component{
       inputText: "",
     }
   }
+  _onPressButton() {
+    alert('You tapped the button!')
+  }
+
+  _onLongPressButton() {
+    alert('You long-pressed the button!')
+  }
   render() {
-    const text = this.state.inputText;
     return (
-      <View style={styles.flexParent}>
-        <View>
-          <Text>Hello</Text>
-          <TextInput
-            style={{height:50}}
-            placeholder="Convert pizza"
-            onChangeText={ (text) => this.setState({ inputText: text }) }
-          />
-          <Text>{text.split(' ').map((word, index) => word && <Box key={index} />)}</Text>
-        </View>
+      <View style={styles.container}>
+        <TouchableHighlight onPress={this._onPressButton} underlayColor="white">
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>TouchableHighlight</Text>
+          </View>
+        </TouchableHighlight>
+        <TouchableOpacity onPress={this._onPressButton}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>TouchableOpacity</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableWithoutFeedback
+          onPress={this._onPressButton}
+        >
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>TouchableWithoutFeedback</Text>
+          </View>
+        </TouchableWithoutFeedback>
+        <TouchableHighlight onPress={this._onPressButton} onLongPress={this._onLongPressButton} underlayColor="white">
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Touchable with Long Press</Text>
+          </View>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -33,9 +55,18 @@ const Box = () => {
 };
 
 const styles = StyleSheet.create({
-  flexParent: {
+  container: {
+    paddingTop: 60,
+    alignItems: 'center'
+  },
+  button: {
+    marginBottom: 30,
+    width: 260,
+    alignItems: 'center',
+    backgroundColor: '#2196F3'
+  },
+  buttonText: {
     padding: 20,
-    marginTop: 50,
-    flex: 1,
+    color: 'white'
   }
 });

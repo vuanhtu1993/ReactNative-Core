@@ -8,7 +8,7 @@ import ListViewDemo from "./component/ListView";
 export default class App extends Component {
   render() {
     return (
-      <ListViewDemo/>
+      <FlexDimension/>
     );
   }
 }

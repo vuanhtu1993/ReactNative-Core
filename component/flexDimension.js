@@ -5,11 +5,11 @@ export default class FlexDimension extends Component{
   render() {
     return (
       <View style={styles.flexParent}>
-        <View style={{ height: 100, width: 100, backgroundColor: 'powderblue' }}/>
-        <View style={{ height: 100, width: 100, backgroundColor: 'skyblue' }}/>
-        <View style={{ height: 100, width: 100, backgroundColor: 'steelblue' }}/>
-        <View style={{ height: 100, width: 100, backgroundColor: 'powderblue' }}/>
-        <View style={{ height: 100, width: 100, backgroundColor: 'skyblue' }}/>
+        <View style={{ height: 100, backgroundColor: 'powderblue' }}/>
+        <View style={{ height: 100, backgroundColor: 'skyblue' }}/>
+        <View style={{ height: 100, backgroundColor: 'steelblue' }}/>
+        <View style={{ height: 100, backgroundColor: 'powderblue' }}/>
+        <View style={{ height: 100, backgroundColor: 'skyblue' }}/>
       </View>
     );
   }
@@ -19,8 +19,7 @@ const styles = StyleSheet.create({
   flexParent: {
     flex: 1,
     flexDirection: 'column',
-    flexWrap: 'nowrap',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    justifyContent: 'center',
+    alignItems: 'stretch',
   }
 });
